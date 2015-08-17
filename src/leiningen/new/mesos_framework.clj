@@ -17,6 +17,10 @@
              ["Vagrantfile" (render "Vagrantfile" data)]
              ["project.clj" (render "project.clj" data)]
              ["dev/user.clj" (render "dev/user.clj" data)]
-             ["src/{{sanitized}}/components/executor.clj" (render "components/executor.clj" data)]
+             ["src/{{sanitized}}/components/executor_driver.clj" (render "components/executor_driver.clj" data)]
+             ["src/{{sanitized}}/components/scheduler_driver.clj" (render "components/scheduler_driver.clj" data)]
+             ["src/{{sanitized}}/components/zookeeper.clj" (render "components/zookeeper.clj" data)]
              ["src/{{sanitized}}/components/scheduler.clj" (render "components/scheduler.clj" data)]
+             ["src/{{sanitized}}/scheduler.clj" (render "scheduler.clj" data)]
+             ["src/{{sanitized}}/executor.clj" (render "executor.clj" data)]
              ["src/{{sanitized}}/system.clj" (render "system.clj" data)])))
