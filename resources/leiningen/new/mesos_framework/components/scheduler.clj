@@ -1,12 +1,12 @@
-(ns {{name}}.components.scheduler
+(ns {{sanitized}}.components.scheduler
   (:require [com.stuartsierra.component :as component]
             [{{name}}.scheduler :as sched]))
 
-(defrecord Scheduler [state scheduler zookeeper]
+(defrecord Scheduler [state path scheduler zookeeper]
   component/Lifecycle
   (start [component]
     (when-not scheduler
-      (let [state (atom {}]
+      (let [state (or state (atom {}))
             scheduler (sched/scheduler state zookeeper)]
         (assoc component :state state :scheduler scheduler))))
   (stop [component]
@@ -14,6 +14,6 @@
       (assoc component :state nil :scheduler nil))))
 
 (defn new-scheduler
-  []
-  (Scheduler.))
+  [state path]
+  (map->Scheduler {:state state :path path}))
 

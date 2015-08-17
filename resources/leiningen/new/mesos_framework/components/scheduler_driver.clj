@@ -1,4 +1,4 @@
-(ns {{name}}.components.scheduler-driver
+(ns {{sanitized}}.components.scheduler-driver
   (:require [clj-mesos.scheduler :as mesos]
             [com.stuartsierra.component :as component]))
 

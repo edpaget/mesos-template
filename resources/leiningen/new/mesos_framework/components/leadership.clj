@@ -1,12 +1,12 @@
-(ns {{}}.components.leadership
+(ns {{sanitized}}.components.leadership
     (:require [curator.leader :refer (leader-selector)]
               [com.stuartsierra.component :as component]))
 
-(defrecord Leadership [leader-fn loser-fn path curator selector]
+(defrecord Leadership [leader-fn loser-fn path zookeeper selector]
   component/Lifecycle
   (start [component]
     (when-not selector
-      (let [selector (leader-selector curator path leader-fn loser-fn)]
+      (let [selector (leader-selector (:curator zookeeper) path leader-fn loser-fn)]
         (.start selector)
         (assoc component :selector selector))))
   (stop [component]
@@ -15,6 +15,6 @@
       (assoc component :selector nil))))
 
 (defn new-leadership
-  [path]
-  (map->Leadership {:path path}))
+  [leader-fn loser-fn path]
+  (map->Leadership {:path path :loser-fn loser-fn :leader-fn leader-fn}))
 
