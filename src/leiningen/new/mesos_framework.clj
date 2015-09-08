@@ -11,7 +11,7 @@
               :sanitized (name-to-path name)}]
     (main/info "Generating fresh 'lein new' mesos-framework project.")
     (->files data
-             [".gitignore" (render "gitignore" data)]
+             [".gitignore" (render ".gitignore" data)]
              ["LICENSE" (render "LICENSE" data)]
              ["README.md" (render "README.md" data)]
              ["Vagrantfile" (render "Vagrantfile" data)]
