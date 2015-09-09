@@ -1,4 +1,4 @@
-(ns {{name}}.components.executor-driver
+(ns {{name}}.component.executor-driver
   (:require [clj-mesos.executor :as mesos]
             [com.stuartsierra.component :as component]))
 

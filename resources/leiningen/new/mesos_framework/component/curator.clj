@@ -1,24 +1,24 @@
-(ns {{name}}.components.zookeeper
+(ns {{name}}.component.curator
     (:require [curator.framework :refer (curator-framework)]
               [curator.exhibitor :refer (exhibitor-ensemble-provider exhibitors)]
               [com.stuartsierra.component :as component]))
 
-(defrecord Zookeeper [exhibitor-config exhibitor-connection curator]
+(defrecord Curator [exhibitor-config exhibitor-connection curator]
   component/Lifecycle
   (start [component]
     (when-not curator
       (let [{:keys [hosts port backup]} exhibitor-config
             exhibitor-connection (exhibitors hosts port backup)
-            provider (exhibitor-ensemble-provider exhibitor-conneciton)
+            provider (exhibitor-ensemble-provider exhibitor-connection)
             _ (.pollForInitialEnsemble provider)
             curator (curator-framework "" :exhibitor-provider provider)]
         (.start curator)
         (assoc component :exhibitor-connection exhibitor-connection :curator curator))))
   (stop [component]
     (when curator
-      (.stop curator)
+      (.close curator)
       (assoc component :curator nil :exhibitor-connection nil))))
 
-(defn new-zookeeper
+(defn new-curator
   [exhibitor]
-  (map->Zookeeper {:exhibitor-config exhibitor}))
+  (map->Curator {:exhibitor-config exhibitor}))

@@ -1,4 +1,4 @@
-(ns {{sanitized}} .scheduler
+(ns {{name}}.scheduler
   (:require [clj-mesos.scheduler :as mesos]))
 
 (def min-cpu 0.5)
@@ -13,7 +13,31 @@
                 :mem min-mem}
     :executor {:executor-id "{{name}}-executor"
                :command {:shell true
-                         :value "java -jar /vagrant/target/uberjar/{{sanitized}}-0.1.0-SNAPSHOT-standalone.jar -m {{sanitized}}.system executor" }}}])
+                         :value "java -jar /vagrant/target/uberjar/{{name}}-0.1.0-SNAPSHOT-standalone.jar -m {{name}}.system executor" }}}])
+
+(defn shell-task-info
+  [uuid {:keys [slave-id]}]
+  [{:name "{{name}}"
+    :task-id uuid
+    :slave-id slave-id
+    :resources {:cpus min-cpu
+                :mem min-mem}
+    :executor {:executor-id "{{name}}-executor"
+               :command {:shell true
+                         :value "while true; do echo \"Hey Mesos\"; fi"}}}])
+
+(defn docker-task-info
+  [uuid {:keys [slave-id]}]
+  [{:name "{{name}}"
+    :task-id uuid
+    :slave-id slave-id
+    :resources {:cpus min-cpu
+                :mem min-mem}
+    :executor {:executor-id "{{name}}-executor"
+               :command {:shell true
+                         :container {:type :docker
+                                     :image ""
+                                     }}}}])
 
 (defn resources?
   [{:keys [cpus mem]}]
