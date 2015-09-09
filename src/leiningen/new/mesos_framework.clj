@@ -16,6 +16,7 @@
              ["LICENSE" (render "LICENSE" data)]
              ["README.md" (render "README.md" data)]
              ["Vagrantfile" (render "Vagrantfile" data)]
+             ["diagnose-vagrant-setup.sh" (render "diagnose-vagrant-setup.sh" data)]
              ["project.clj" (render "project.clj" data)]
              ["dev/user.clj" (render "dev/user.clj" data)]
              ["src/{{sanitized}}/component/executor_driver.clj" (render "component/executor_driver.clj" data)]
