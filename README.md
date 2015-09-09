@@ -1,10 +1,45 @@
 # mesos-framework
 
-A Leiningen template for FIXME.
+A Leiningen template for building a mesos framework using Clojure.
 
 ## Usage
 
-FIXME
+It hasn't been released yet, so you can't just use `lein new mesos-framework` yet.
+Instead here's the workflow
+
+```
+lein new mesos-framework awesome-mix-vol2 --snapshot
+```
+
+It comes with Vagrant already setup. So then you can just run
+from `awesome-mix-vol2` directory.
+
+
+```
+vagrant up
+```
+
+Optionally, you can supply a `MESOS_SLAVES=<count>` environment variable to
+create the desired number of slaves too. Default is 2.
+
+Once the servers are up, ssh into the master node.
+
+```
+vagrant ssh master
+```
+
+The project is mounted conveniently at the `/vagrant` directory.
+
+```
+cd /vagrant
+lein repl
+```
+
+Now you're off to start your very own mesos framework!
+
+```
+(go)
+```
 
 ## License
 

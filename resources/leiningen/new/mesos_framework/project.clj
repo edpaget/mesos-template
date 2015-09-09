@@ -7,6 +7,7 @@
                  [edpaget/clj-mesos "0.22.1-SNAPSHOT"]
                  [curator "0.0.6"]
                  [com.stuartsierra/component "0.2.3"]]
+  :local-repo ".m2"
   :target-path "target/%s"
   :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.7"]
                                   [alembic "0.3.2"]]
