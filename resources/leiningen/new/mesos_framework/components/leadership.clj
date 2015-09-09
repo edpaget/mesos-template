@@ -1,4 +1,4 @@
-(ns {{sanitized}}.components.leadership
+(ns {{name}}.components.leadership
     (:require [curator.leader :refer (leader-selector)]
               [com.stuartsierra.component :as component]))
 
@@ -17,4 +17,3 @@
 (defn new-leadership
   [leader-fn loser-fn path]
   (map->Leadership {:path path :loser-fn loser-fn :leader-fn leader-fn}))
-

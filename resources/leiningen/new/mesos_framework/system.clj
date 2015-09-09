@@ -1,12 +1,12 @@
-(ns {{sanitized}}.system
+(ns {{name}}.system
     (:require [com.stuartsierra.component :as component]
-              [{{sanitized}}.components.executor-driver :refer [new-executor-driver]]
-              [{{sanitized}}.components.scheduler-driver :refer [new-scheduler-driver]]
-              [{{sanitized}}.components.exhibitor :refer [new-zookeeper]]
-              [{{sanitized}}.components.leadership :refer [new-leadership]]
-              [{{sanitized}}.components.scheduler :refer [new-scheduler]]
-              [{{sanitized}}.executor :refer [executor]]
-              [{{sanitized}}.scheduler :refer [scheduler]])
+              [{{name}}.components.executor-driver :refer [new-executor-driver]]
+              [{{name}}.components.scheduler-driver :refer [new-scheduler-driver]]
+              [{{name}}.components.exhibitor :refer [new-zookeeper]]
+              [{{name}}.components.leadership :refer [new-leadership]]
+              [{{name}}.components.scheduler :refer [new-scheduler]]
+              [{{name}}.executor :refer [executor]]
+              [{{name}}.scheduler :refer [scheduler]])
     (:gen-class))
 
 (defn executor-system

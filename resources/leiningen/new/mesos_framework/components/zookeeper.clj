@@ -1,4 +1,4 @@
-(ns {{sanitized}}.components.zookeeper
+(ns {{name}}.components.zookeeper
     (:require [curator.framework :refer (curator-framework)]
               [curator.exhibitor :refer (exhibitor-ensemble-provider exhibitors)]
               [com.stuartsierra.component :as component]))
@@ -22,4 +22,3 @@
 (defn new-zookeeper
   [exhibitor]
   (map->Zookeeper {:exhibitor-config exhibitor}))
-

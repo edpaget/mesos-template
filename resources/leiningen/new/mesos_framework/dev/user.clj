@@ -12,8 +12,8 @@
             [clojure.tools.namespace.repl :refer [refresh refresh-all]]
             [alembic.still :refer [lein]]
             [com.stuartsierra.component :as component]
-            [hello-mesos.system :as sys]
-            [hello-mesos.scheduler :as sched]
+            [{{name}} .system :as sys]
+            [{{name}} .scheduler :as sched]
             [clojure.java.shell :refer [sh]]))
 
 (def configuration (atom nil))

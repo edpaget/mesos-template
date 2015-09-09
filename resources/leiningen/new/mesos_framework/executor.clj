@@ -1,4 +1,4 @@
-(ns {{sanitized}} .executor
+(ns {{name}}.executor
   (:require [clj-mesos.executor :as mesos])
   (:import [java.util Date]))
 

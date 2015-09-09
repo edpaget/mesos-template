@@ -1,4 +1,4 @@
-(ns {{sanitized}}.components.scheduler
+(ns {{name}}.components.scheduler
   (:require [com.stuartsierra.component :as component]
             [{{name}}.scheduler :as sched]))
 
@@ -16,4 +16,3 @@
 (defn new-scheduler
   [state path]
   (map->Scheduler {:state state :path path}))
-
