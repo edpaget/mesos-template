@@ -41,6 +41,20 @@ Now you're off to start your very own mesos framework!
 (go)
 ```
 
+## Authors
+
+- Ed Paget (@edpaget)
+- Prasanna Gautam (@prasincs)
+
+## Contributors
+
+Many thanks to the following folks for helping out with testing.
+We appreciate the invaluable feedback provided by the folks here.
+
+- Brent Vukmer (@BrentVukmer)
+- Issac Praveen (@icylisper)
+- David Greenberg (@dgrnbrg)
+
 ## License
 
 Copyright © 2015 FIXME
