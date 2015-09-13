@@ -2,41 +2,41 @@
 
 A Leiningen template for building a mesos framework using Clojure.
 
+## Prereqs
+
+Install the following:
+- [Leiningen](http://leiningen.org)
+- [Vagrant](https://www.vagrantup.com)
+- [VirtualBox](https://www.virtualbox.org/)
+
 ## Usage
 
-It hasn't been released yet, so you can't just use `lein new mesos-framework` yet.
-Instead here's the workflow
+It hasn't been released, so you can't use `lein new mesos-framework` yet.
+
+Instead, here's the current workflow:
+
+1. Clone this repository
+2. From the cloned repository's root directory, run Leiningen with the mesos-framework template
+3. Start Vagrant from the resulting project directory 
+4. Once all nodes have started, SSH into the master node
+5. Go to the default project directory and start a Clojure REPL
+
+Step 3 notes:
+- Vagrant will download and decompress a base image before starting the first time.  
+- You can optionally supply a `MESOS_SLAVES=<count>` environment variable. Default is 2.
 
 ```
+git clone https://github.com/prasincs/mesos-template.git
+cd mesos-template
 lein new mesos-framework awesome-mix-vol2 --snapshot
-```
-
-It comes with Vagrant already setup. So then you can just run
-from `awesome-mix-vol2` directory.
-
-
-```
+cd awesome-mix-vol2
 vagrant up
-```
-
-Optionally, you can supply a `MESOS_SLAVES=<count>` environment variable to
-create the desired number of slaves too. Default is 2.
-
-Once the servers are up, ssh into the master node.
-
-```
 vagrant ssh master
-```
-
-The project is mounted conveniently at the `/vagrant` directory.
-
-```
 cd /vagrant
 lein repl
 ```
 
-Now you're off to start your very own mesos framework!
-
+Now create your own Mesos framework!
 ```
 (go)
 ```
