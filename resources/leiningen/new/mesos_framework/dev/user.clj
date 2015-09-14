@@ -54,12 +54,14 @@
   [& [task-type]]
   (when-let [task-fn (if (or (keyword? task-type) (nil? task-type))
                        (condp = task-type
-                         nil (do (lein uberjar) sched/jar-task-info)
-                         :jar (do (lein uberjar) sched/jar-task-info)
+                         nil sched/jar-task-info
+                         :jar sched/jar-task-info
                          :shell sched/shell-task-info
                          :docker  sched/docker-task-info)
                        task-type)]
-    (swap! configuration assoc :task-launcher (fetch-task-type task-type)))
+    (when (or (nil? task-type) (= :jar task-type))
+      (lein uberjar))
+    (swap! configuration assoc :task-launcher task-fn))
   (init)
   (start)
   :ready)

@@ -4,7 +4,7 @@
   :license {:name "TODO: CHOOSE A LICENSE"
             :url "TODO: LINK TO IT" }
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [clj-mesos "0.22.1"]
+                 [clj-mesos "0.22.0"]
                  [com.stuartsierra/component "0.2.3"]]
   :target-path "target/%s"
   :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.7"]
