@@ -28,16 +28,15 @@
 
 (defn docker-task-info
   [uuid {:keys [slave-id]}]
-  [{:name "{{name}}"
+  [{:name "hello-mesos"
     :task-id uuid
     :slave-id slave-id
     :resources {:cpus min-cpu
                 :mem min-mem}
-    :executor {:executor-id "{{name}}-executor"
-               :command {:shell true
-                         :container {:type :docker
-                                     :image ""
-                                     }}}}])
+    :command {:shell true
+              :value "while true; do echo \"Hey Mesos\"; sleep 5; done"}
+    :container {:type :docker
+                :docker {:image "busybox"}}}])
 
 (defn resources?
   [{:keys [cpus mem]}]
