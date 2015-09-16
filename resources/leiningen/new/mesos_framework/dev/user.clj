@@ -13,8 +13,8 @@
             [clojure.test :as test]
             [clojure.tools.namespace.repl :refer [refresh refresh-all]]
             [com.stuartsierra.component :as component]
-            [{{sanitized}}.system :as sys]
-            [{{sanitized}}.scheduler :as sched]))
+            [{{name}}.system :as sys]
+            [{{name}}.scheduler :as sched]))
 
 (def configuration (atom {:master "zk://10.10.4.2:2181/mesos"
                           :tasks 1

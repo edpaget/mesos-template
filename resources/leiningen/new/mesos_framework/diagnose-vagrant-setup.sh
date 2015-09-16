@@ -1,12 +1,30 @@
 #!/bin/bash
-# TODO: validate slave IPs match too
-# TODO: connectivity between servers
 CURDIR=$(dirname "$0")
+ROOTDIR="$CURDIR/.."
 EXPECTED_MASTER_IP="10.10.4.2"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 HOSTS_LIST_CACHE=""
+
+## Dependency Checks
+
+deps="vagrant VBoxManage"
+for dep in $deps; do
+    which $dep > /dev/null || (echo "Cannot find command: $dep, install it and run again" && exit 1)
+done
+
+## Prompts
+
+success(){
+    echo -e "${GREEN}Success: ${NC}" $1
+}
+
+failed(){
+    echo -e "${RED}Failed: ${NC}" $1 "Result[" $2 "]" "Expected[" $3 "]"
+}
+
+## Vagrant specific checks
 
 get_hosts(){
     if [ "x$HOSTS_LIST_CACHE" = "x" ];
@@ -16,13 +34,6 @@ get_hosts(){
     echo "${HOSTS_LIST_CACHE}"
 }
 
-success(){
-    echo -e "${GREEN}Success: ${NC}" $1
-}
-
-failed(){
-    echo -e "${RED}Failed: ${NC}" $1 "Result[" $2 "]" "Expected[" $3 "]"
-}
 
 get_actual_host_ip(){
     HOST_NAME=$1
@@ -36,7 +47,20 @@ get_slaves_count(){
     then
         return $MESOS_SLAVES;
     else
-        echo $(grep MESOS_SLAVES $CURDIR/Vagrantfile | tr -d '[:alpha:][:punct:][:blank:]');
+        echo $(grep MESOS_SLAVES $ROOTDIR/Vagrantfile | tr -d '[:alpha:][:punct:][:blank:]');
+    fi
+}
+
+## Validation code
+
+
+validate_newest_box(){
+    vagrant box outdated
+    if [ "$?" = "0" ];
+    then
+        success "Vagrant Box is upto date"
+    else
+        failed "Vagrant Box needs to be updated. Please run vagrant box update"
     fi
 }
 
@@ -129,7 +153,7 @@ EOF
 }
 
 
-
+validate_newest_box
 validate_master_ip
 validate_zookeeper_running
 validate_slave_counts
