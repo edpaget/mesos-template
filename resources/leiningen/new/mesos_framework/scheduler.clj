@@ -17,14 +17,13 @@
 
 (defn shell-task-info
   [uuid {:keys [slave-id]}]
-  [{:name "{{name}}"
+  [{:name "hello-mesos"
     :task-id uuid
     :slave-id slave-id
     :resources {:cpus min-cpu
                 :mem min-mem}
-    :executor {:executor-id "{{name}}-executor"
-               :command {:shell true
-                         :value "while true; do echo \"Hey Mesos\"; fi"}}}])
+    :command {:shell true
+              :value "while true; do echo \"Hey Mesos\"; sleep 5; done"}}])
 
 (defn docker-task-info
   [uuid {:keys [slave-id]}]
