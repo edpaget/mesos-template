@@ -1,4 +1,4 @@
-(defproject mesos-framework/lein-template "1.0.1-SNAPSHOT"
+(defproject mesos-framework/lein-template "1.0.1"
   :description "A template for setting up mesos-frameworks using component."
   :url "http://github.com/edpaget/mesos-framework"
   :lein-release {:deploy-via :clojars}
