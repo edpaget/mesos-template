@@ -18,7 +18,7 @@ Instead, here's the current workflow:
 1. Clone this repository
 2. From the cloned repository's root directory, run Leiningen with the mesos-framework template
 3. Start Vagrant from the resulting project directory 
-4. Once all nodes have started, SSH into the master node
+4. Once all nodes have started, SSH into the master node using `vagrant ssh master`
 5. Go to the default project directory and start a Clojure REPL
 
 Step 3 notes:
