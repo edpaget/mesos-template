@@ -54,7 +54,7 @@
   [& [task-type]]
   (when-let [task-fn (if (or (keyword? task-type) (nil? task-type))
                        (condp = task-type
-                         nil sched/jar-task-info
+                         nil sched/shell-task-info
                          :jar sched/jar-task-info
                          :shell sched/shell-task-info
                          :docker  sched/docker-task-info)
