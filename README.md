@@ -11,7 +11,7 @@ Install the following:
 
 ## Usage
 
-It hasn't been released, so you can't use `lein new mesos-framework` yet.
+It has been released now on Clojars, so you can use `lein new mesos-framework`.
 
 Instead, here's the current workflow:
 
