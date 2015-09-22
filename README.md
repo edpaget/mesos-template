@@ -52,6 +52,7 @@ We appreciate the invaluable feedback provided by the folks here.
 - Brent Vukmer (@BrentVukmer)
 - Issac Praveen (@icylisper)
 - David Greenberg (@dgrnbrg)
+- Marc Bollinger (@slpsys)
 
 ## License
 
