@@ -26,9 +26,7 @@ Step 3 notes:
 - You can optionally supply a `MESOS_SLAVES=<count>` environment variable. Default is 2.
 
 ```
-git clone https://github.com/prasincs/mesos-template.git
-cd mesos-template
-lein new mesos-framework awesome-mix-vol2 --snapshot
+lein new mesos-framework awesome-mix-vol2
 cd awesome-mix-vol2
 vagrant up
 vagrant ssh master
